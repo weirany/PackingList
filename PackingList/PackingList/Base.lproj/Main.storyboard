@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wxz-Zt-b1N">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My trips-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MyTripsViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,9 +17,107 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="My trips" id="NCF-uy-njs">
+                        <barButtonItem key="rightBarButtonItem" title="Next" systemItem="add" id="dHH-Eu-oYP">
+                            <connections>
+                                <segue destination="RIr-KD-tQb" kind="show" id="hAc-s4-URi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1252" y="407"/>
+        </scene>
+        <!--Trip is for...-->
+        <scene sceneID="FPb-D4-kPA">
+            <objects>
+                <viewController id="RIr-KD-tQb" customClass="TripTypeViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EG9-16-U0Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Smf-jT-s5f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zks-Ru-URR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Trip is for..." id="Xg2-rS-Fuv">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2h4-vY-zcT"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="JeJ-XD-SKe">
+                            <connections>
+                                <segue destination="Zjg-T8-Khu" kind="show" id="yMz-1b-Hr1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EL9-cV-lLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="407"/>
+        </scene>
+        <!--Packing list-->
+        <scene sceneID="5hR-FZ-VKa">
+            <objects>
+                <viewController id="Zjg-T8-Khu" customClass="PackingListViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SEz-Rf-jz6"/>
+                        <viewControllerLayoutGuide type="bottom" id="iUr-qn-znZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B0E-fn-aqn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Packing list" id="gxN-qe-GQA">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="SvQ-OQ-1WL">
+                            <connections>
+                                <segue destination="zhz-0V-CUq" kind="show" id="9Jk-gG-Knn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8PZ-6b-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2659" y="407"/>
+        </scene>
+        <!--Trip Name View Controller-->
+        <scene sceneID="4E5-4a-nGp">
+            <objects>
+                <viewController id="zhz-0V-CUq" customClass="TripNameViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vot-cI-uQU"/>
+                        <viewControllerLayoutGuide type="bottom" id="5PN-Ze-Jd0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4TG-Rf-lnf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OO8-mn-WZD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8xf-6e-yDc"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMo-UG-zLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3381" y="407"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eHU-Fr-SiT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wxz-Zt-b1N" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="66O-3r-61J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="K9m-sC-bXx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzj-NH-XWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="1068"/>
         </scene>
     </scenes>
 </document>

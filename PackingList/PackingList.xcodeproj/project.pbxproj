@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023E871A005E8F00F00756 /* AppDelegate.swift */; };
 		C4023E8B1A005E8F00F00756 /* PackingList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */; };
-		C4023E8D1A005E8F00F00756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023E8C1A005E8F00F00756 /* ViewController.swift */; };
+		C4023E8D1A005E8F00F00756 /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023E8C1A005E8F00F00756 /* MyTripsViewController.swift */; };
 		C4023E901A005E8F00F00756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4023E8E1A005E8F00F00756 /* Main.storyboard */; };
 		C4023E921A005E8F00F00756 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4023E911A005E8F00F00756 /* Images.xcassets */; };
 		C4023E951A005E8F00F00756 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4023E931A005E8F00F00756 /* LaunchScreen.xib */; };
 		C4023EA11A005E8F00F00756 /* PackingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023EA01A005E8F00F00756 /* PackingListTests.swift */; };
+		C418D8631A00B6040074BF6A /* TripTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8621A00B6040074BF6A /* TripTypeViewController.swift */; };
+		C418D8651A00BC770074BF6A /* PackingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8641A00BC770074BF6A /* PackingListViewController.swift */; };
+		C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +34,16 @@
 		C4023E861A005E8F00F00756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4023E871A005E8F00F00756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4023E8A1A005E8F00F00756 /* PackingList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PackingList.xcdatamodel; sourceTree = "<group>"; };
-		C4023E8C1A005E8F00F00756 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C4023E8C1A005E8F00F00756 /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		C4023E8F1A005E8F00F00756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4023E911A005E8F00F00756 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C4023E941A005E8F00F00756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C4023E9A1A005E8F00F00756 /* PackingListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PackingListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4023E9F1A005E8F00F00756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4023EA01A005E8F00F00756 /* PackingListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackingListTests.swift; sourceTree = "<group>"; };
+		C418D8621A00B6040074BF6A /* TripTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeViewController.swift; sourceTree = "<group>"; };
+		C418D8641A00BC770074BF6A /* PackingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListViewController.swift; sourceTree = SOURCE_ROOT; };
+		C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +86,15 @@
 			isa = PBXGroup;
 			children = (
 				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
-				C4023E8C1A005E8F00F00756 /* ViewController.swift */,
+				C4023E8C1A005E8F00F00756 /* MyTripsViewController.swift */,
 				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
 				C4023E911A005E8F00F00756 /* Images.xcassets */,
 				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
 				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
+				C418D8641A00BC770074BF6A /* PackingListViewController.swift */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
+				C418D8621A00B6040074BF6A /* TripTypeViewController.swift */,
+				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -215,9 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4023E8D1A005E8F00F00756 /* ViewController.swift in Sources */,
+				C418D8651A00BC770074BF6A /* PackingListViewController.swift in Sources */,
+				C4023E8D1A005E8F00F00756 /* MyTripsViewController.swift in Sources */,
+				C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */,
 				C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */,
 				C4023E8B1A005E8F00F00756 /* PackingList.xcdatamodeld in Sources */,
+				C418D8631A00B6040074BF6A /* TripTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +421,7 @@
 				C4023EA61A005E8F00F00756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4023EA71A005E8F00F00756 /* Build configuration list for PBXNativeTarget "PackingListTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +430,7 @@
 				C4023EA91A005E8F00F00756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
