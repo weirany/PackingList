@@ -20,40 +20,47 @@
                     <navigationItem key="navigationItem" title="My trips" id="NCF-uy-njs">
                         <barButtonItem key="rightBarButtonItem" title="Next" systemItem="add" id="dHH-Eu-oYP">
                             <connections>
-                                <segue destination="RIr-KD-tQb" kind="show" id="hAc-s4-URi"/>
+                                <segue destination="Icv-DB-deV" kind="show" id="GT0-zN-0un"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="407"/>
+            <point key="canvasLocation" x="1304" y="439"/>
         </scene>
-        <!--Trip is for...-->
-        <scene sceneID="FPb-D4-kPA">
+        <!--Trip Type Table View Controller-->
+        <scene sceneID="wH9-9E-MDv">
             <objects>
-                <viewController id="RIr-KD-tQb" customClass="TripTypeViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EG9-16-U0Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="Smf-jT-s5f"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zks-Ru-URR">
+                <tableViewController id="Icv-DB-deV" customClass="TripTypeTableViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FR8-ZF-vyl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Trip is for..." id="Xg2-rS-Fuv">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="2h4-vY-zcT"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="JeJ-XD-SKe">
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wQQ-h9-1gX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wQQ-h9-1gX" id="ETq-2Y-DRk">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Icv-DB-deV" id="jRT-Va-iuy"/>
+                            <outlet property="delegate" destination="Icv-DB-deV" id="Bwp-op-RFz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="jFI-J1-qm0">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="TR5-x1-IqZ">
                             <connections>
-                                <segue destination="Zjg-T8-Khu" kind="show" id="yMz-1b-Hr1"/>
+                                <segue destination="Zjg-T8-Khu" kind="show" id="e2R-qJ-oO1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EL9-cV-lLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cy-Jo-PRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1963" y="407"/>
+            <point key="canvasLocation" x="564" y="1231"/>
         </scene>
         <!--Packing list-->
         <scene sceneID="5hR-FZ-VKa">
@@ -78,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PZ-6b-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2659" y="407"/>
+            <point key="canvasLocation" x="1304" y="1231"/>
         </scene>
         <!--Trip Name View Controller-->
         <scene sceneID="4E5-4a-nGp">
@@ -99,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMo-UG-zLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3381" y="407"/>
+            <point key="canvasLocation" x="2059" y="1231"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eHU-Fr-SiT">
@@ -117,7 +124,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzj-NH-XWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="1068"/>
+            <point key="canvasLocation" x="568" y="439"/>
         </scene>
     </scenes>
 </document>

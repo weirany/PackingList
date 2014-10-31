@@ -14,9 +14,9 @@
 		C4023E921A005E8F00F00756 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4023E911A005E8F00F00756 /* Images.xcassets */; };
 		C4023E951A005E8F00F00756 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4023E931A005E8F00F00756 /* LaunchScreen.xib */; };
 		C4023EA11A005E8F00F00756 /* PackingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023EA01A005E8F00F00756 /* PackingListTests.swift */; };
-		C418D8631A00B6040074BF6A /* TripTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8621A00B6040074BF6A /* TripTypeViewController.swift */; };
 		C418D8651A00BC770074BF6A /* PackingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8641A00BC770074BF6A /* PackingListViewController.swift */; };
 		C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */; };
+		C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		C4023E9A1A005E8F00F00756 /* PackingListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PackingListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4023E9F1A005E8F00F00756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4023EA01A005E8F00F00756 /* PackingListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackingListTests.swift; sourceTree = "<group>"; };
-		C418D8621A00B6040074BF6A /* TripTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeViewController.swift; sourceTree = "<group>"; };
 		C418D8641A00BC770074BF6A /* PackingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListViewController.swift; sourceTree = SOURCE_ROOT; };
 		C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripNameViewController.swift; sourceTree = "<group>"; };
+		C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,12 +88,12 @@
 				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
 				C4023E8C1A005E8F00F00756 /* MyTripsViewController.swift */,
 				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
+				C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */,
 				C4023E911A005E8F00F00756 /* Images.xcassets */,
 				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
 				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
 				C418D8641A00BC770074BF6A /* PackingListViewController.swift */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
-				C418D8621A00B6040074BF6A /* TripTypeViewController.swift */,
 				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
 			);
 			path = PackingList;
@@ -228,8 +228,8 @@
 				C4023E8D1A005E8F00F00756 /* MyTripsViewController.swift in Sources */,
 				C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */,
 				C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */,
+				C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */,
 				C4023E8B1A005E8F00F00756 /* PackingList.xcdatamodeld in Sources */,
-				C418D8631A00B6040074BF6A /* TripTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
