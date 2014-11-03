@@ -9,6 +9,8 @@
 import UIKit
 
 class TripTypeTableViewController: UITableViewController {
+    
+    var typeSelected:[Bool] = [true, false, false, false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,10 @@ class TripTypeTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tripTypeChanged(sender: UISwitch) {
+        typeSelected[sender.tag] = sender.on
+        println(typeSelected)
+    }
 
     // MARK: - Table view data source
 
