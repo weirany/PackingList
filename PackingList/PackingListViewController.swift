@@ -10,10 +10,13 @@ import UIKit
 
 class PackingListViewController: UIViewController {
 
+    var typeSelected:[Bool] = [false, false, false, false]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        println("type selected array set to: \(typeSelected)")
     }
 
     override func didReceiveMemoryWarning() {

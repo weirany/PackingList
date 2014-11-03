@@ -29,7 +29,12 @@ class TripTypeTableViewController: UITableViewController {
     
     @IBAction func tripTypeChanged(sender: UISwitch) {
         typeSelected[sender.tag] = sender.on
-        println(typeSelected)
+//        println(typeSelected)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var packingListViewController = segue.destinationViewController as PackingListViewController
+        packingListViewController.typeSelected = typeSelected
     }
 
     // MARK: - Table view data source

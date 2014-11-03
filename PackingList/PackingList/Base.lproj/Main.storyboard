@@ -131,7 +131,7 @@
                     <navigationItem key="navigationItem" id="jFI-J1-qm0">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="TR5-x1-IqZ">
                             <connections>
-                                <segue destination="Zjg-T8-Khu" kind="show" id="e2R-qJ-oO1"/>
+                                <segue destination="Zjg-T8-Khu" kind="show" identifier="typeToListSegue" id="e2R-qJ-oO1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
