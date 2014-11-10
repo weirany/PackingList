@@ -1,17 +1,17 @@
 //
-//  TripTypeTableViewController.swift
+//  PackingListTableViewController.swift
 //  PackingList
 //
-//  Created by Ye, Weiran on 10/31/14.
+//  Created by Ye, Weiran on 11/3/14.
 //  Copyright (c) 2014 Ye, Weiran. All rights reserved.
 //
 
 import UIKit
 
-class TripTypeTableViewController: UITableViewController {
-    
-    var typeSelected:[Bool] = [true, false, false, false]
+class PackingListTableViewController: UITableViewController {
 
+    var typeSelected:[Bool] = [false, false, false, false]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,45 +20,42 @@ class TripTypeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        println("done loading view.")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func tripTypeChanged(sender: UISwitch) {
-        typeSelected[sender.tag] = sender.on
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var packingListViewController = segue.destinationViewController as PackingListTableViewController
-        packingListViewController.typeSelected = typeSelected
-    }
 
     // MARK: - Table view data source
 
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return 0
-//    }
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
 
-    /*
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return 10
+    }
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
 
-        // Configure the cell...
-
+        let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        deleteButton.frame = CGRectMake(280, 7, 100, 30)
+        deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        deleteButton.setTitle("delete", forState: UIControlState.Normal)
+        cell.contentView.addSubview(deleteButton)
+        println("rect is: \(deleteButton.frame)")
+    
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
