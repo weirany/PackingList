@@ -10,7 +10,8 @@ import UIKit
 
 class PackingListTableViewController: UITableViewController {
 
-    var typeSelected:[Bool] = [false, false, false, false]
+    var typeSelected = [false, false, false, false]
+    var items:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,24 @@ class PackingListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // populate items based on selected trip types
+        if typeSelected[0] { // general
+            items.append("passport")
+            items.append("toothbrush")
+        }
+        if typeSelected[1] { // business
+            items.append("business cards business cards business cards business cards ")
+            items.append("laptop")
+        }
+        if typeSelected[2] { // family
+            items.append("snacks")
+            items.append("toys")
+        }
+        if typeSelected[3] { // romantic
+            items.append("wine opener")
+            items.append("bathing suit")
+        }
         
         println("done loading view.")
     }
@@ -40,20 +59,34 @@ class PackingListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 10
+        return 2
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
-
+        
+        // item name
+        let itemLabel = UILabel() as UILabel
+        itemLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        itemLabel.text = items[indexPath.row]
+        cell.contentView.addSubview(itemLabel)
+        
+        // delete button
         let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-        deleteButton.frame = CGRectMake(280, 7, 100, 30)
         deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         deleteButton.setTitle("delete", forState: UIControlState.Normal)
         cell.contentView.addSubview(deleteButton)
-        println("rect is: \(deleteButton.frame)")
-    
+        
+        // view dictionary (for one row)
+        let viewDict = ["itemLabel":itemLabel, "deleteButton":deleteButton]
+        
+        // position
+        let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("|-[itemLabel]-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
+        let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[itemLabel]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
+        cell.addConstraints(cell_c_h)
+        cell.addConstraints(cell_c_v)
+        
         return cell
     }
 
