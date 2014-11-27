@@ -8,6 +8,14 @@
 
 import UIKit
 
+// refer to: http://stackoverflow.com/a/9274863/346676
+extension UITableView {
+    func indexPathForView (view : UIView) -> NSIndexPath? {
+        let location = view.convertPoint(CGPointZero, toView:self)
+        return indexPathForRowAtPoint(location)
+    }
+}
+
 class PackingListTableViewController: UITableViewController {
 
     var typeSelected = [false, false, false, false]
@@ -59,7 +67,7 @@ class PackingListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 2
+        return items.count
     }
 
     
@@ -76,6 +84,7 @@ class PackingListTableViewController: UITableViewController {
         let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
         deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         deleteButton.setTitle("delete", forState: UIControlState.Normal)
+        deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.contentView.addSubview(deleteButton)
         
         // view dictionary (for one row)
@@ -88,6 +97,12 @@ class PackingListTableViewController: UITableViewController {
         cell.addConstraints(cell_c_v)
         
         return cell
+    }
+    
+    func deleteButtonClicked(sender:UIButton!) {
+        let indexPath = self.tableView.indexPathForView(sender) as NSIndexPath!
+        items.removeAtIndex(indexPath.row)
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
     }
 
     /*
