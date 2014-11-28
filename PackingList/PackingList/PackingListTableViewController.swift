@@ -20,6 +20,7 @@ class PackingListTableViewController: UITableViewController {
 
     var typeSelected = [false, false, false, false]
     var items:[String] = []
+    var newItemText = UITextField() as UITextField
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class PackingListTableViewController: UITableViewController {
             items.append("bathing suit")
         }
         
-        println("done loading view.")
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,42 +68,81 @@ class PackingListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return items.count
+        return items.count + 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
-        
-        // item name
-        let itemLabel = UILabel() as UILabel
-        itemLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        itemLabel.text = items[indexPath.row]
-        cell.contentView.addSubview(itemLabel)
-        
-        // delete button
-        let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-        deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        deleteButton.setTitle("delete", forState: UIControlState.Normal)
-        deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        cell.contentView.addSubview(deleteButton)
-        
-        // view dictionary (for one row)
-        let viewDict = ["itemLabel":itemLabel, "deleteButton":deleteButton]
-        
-        // position
-        let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("|-[itemLabel]-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
-        let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[itemLabel]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
-        cell.addConstraints(cell_c_h)
-        cell.addConstraints(cell_c_v)
-        
-        return cell
+        // handle input (new item) row
+        if indexPath.row == 0 {
+            let cell = UITableViewCell()
+            
+            // text box
+            self.newItemText = UITextField() as UITextField
+            self.newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self.newItemText.placeholder = "add a new item..."
+            cell.contentView.addSubview(self.newItemText)
+            
+            // add button
+            let addButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            addButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+            addButton.setTitle("➕", forState: UIControlState.Normal)
+            addButton.addTarget(self, action: "addButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.contentView.addSubview(addButton)
+            
+            // view dictionary (for one row)
+            let viewDict = ["newItemText":newItemText, "addButton":addButton]
+            
+            // position
+            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("|-(15)-[newItemText][addButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
+            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[newItemText]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
+            cell.addConstraints(cell_c_h)
+            cell.addConstraints(cell_c_v)
+            
+            return cell
+        }
+        else { // all other item rows
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
+            
+            // item name
+            cell.textLabel.text = self.items[indexPath.row-1]
+            
+            // delete button
+            let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+            deleteButton.setTitle("❌", forState: UIControlState.Normal)
+            deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.contentView.addSubview(deleteButton)
+            
+            // view dictionary (for one row)
+            let viewDict = ["deleteButton":deleteButton]
+            
+            // position
+            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
+            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
+            cell.addConstraints(cell_c_h)
+            cell.addConstraints(cell_c_v)
+            
+            return cell
+        }
+    }
+    
+    func addButtonClicked(sender:UIButton!) {
+        if self.newItemText.text == "" {
+            return
+        }
+        else {
+            self.items.insert(self.newItemText.text!, atIndex: 0)
+            self.newItemText.text = ""
+            self.tableView.reloadData()
+        }
     }
     
     func deleteButtonClicked(sender:UIButton!) {
         let indexPath = self.tableView.indexPathForView(sender) as NSIndexPath!
-        items.removeAtIndex(indexPath.row)
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        self.items.removeAtIndex(indexPath.row-1)
+        self.tableView.reloadData()
     }
 
     /*
