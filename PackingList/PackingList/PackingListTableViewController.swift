@@ -37,7 +37,7 @@ class PackingListTableViewController: UITableViewController {
             items.append("toothbrush")
         }
         if typeSelected[1] { // business
-            items.append("business cards business cards business cards business cards ")
+            items.append("business cards")
             items.append("laptop")
         }
         if typeSelected[2] { // family
@@ -81,6 +81,7 @@ class PackingListTableViewController: UITableViewController {
             self.newItemText = UITextField() as UITextField
             self.newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
             self.newItemText.placeholder = "add a new item..."
+            self.newItemText.borderStyle = UITextBorderStyle.RoundedRect
             cell.contentView.addSubview(self.newItemText)
             
             // add button
@@ -180,14 +181,13 @@ class PackingListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        var tripNameViewController = segue.destinationViewController as TripNameViewController
+        tripNameViewController.items = self.items
     }
-    */
+
 
 }

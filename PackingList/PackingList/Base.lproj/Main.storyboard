@@ -184,15 +184,47 @@
                     <view key="view" contentMode="scaleToFill" id="4TG-Rf-lnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKl-Et-o9s">
+                                <rect key="frame" x="16" y="85" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Start Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWJ-8c-rzu">
+                                <rect key="frame" x="17" y="165" width="111" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="jBK-67-XTC">
+                                <rect key="frame" x="0.0" y="194" width="375" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="438934179.61723202">
+                                    <!--2014-11-29 06:09:39 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g., Conference at San Francisco" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-xK-nQh">
+                                <rect key="frame" x="16" y="114" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tripNameTextFieldEditingChanged:" destination="zhz-0V-CUq" eventType="editingChanged" id="6iV-Fe-RxT"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="OO8-mn-WZD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8xf-6e-yDc"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="8xf-6e-yDc"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tripName" destination="NL8-xK-nQh" id="1nh-Va-dTi"/>
+                        <outlet property="tripStartDate" destination="jBK-67-XTC" id="yfk-gL-h8M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMo-UG-zLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1769.5" y="1230.5"/>
+            <point key="canvasLocation" x="1505.5" y="1230.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eHU-Fr-SiT">

@@ -10,6 +10,11 @@ import UIKit
 
 class TripNameViewController: UIViewController {
 
+    @IBOutlet weak var tripName: UITextField!
+    @IBOutlet weak var tripStartDate: UIDatePicker!
+    
+    var items = [""]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +25,10 @@ class TripNameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    @IBAction func tripNameTextFieldEditingChanged(sender: UITextField) {
+        self.navigationItem.rightBarButtonItem!.enabled = (self.tripName.text != "")
+    }
 
     /*
     // MARK: - Navigation
