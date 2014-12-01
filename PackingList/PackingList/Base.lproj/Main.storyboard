@@ -18,7 +18,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="My trips" id="NCF-uy-njs">
-                        <barButtonItem key="rightBarButtonItem" title="Next" systemItem="add" id="dHH-Eu-oYP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dHH-Eu-oYP">
                             <connections>
                                 <segue destination="Icv-DB-deV" kind="show" id="GT0-zN-0un"/>
                             </connections>
@@ -215,7 +215,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="OO8-mn-WZD">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="8xf-6e-yDc"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="8xf-6e-yDc">
+                            <connections>
+                                <action selector="doneClicked:" destination="zhz-0V-CUq" id="UbJ-5r-mES"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tripName" destination="NL8-xK-nQh" id="1nh-Va-dTi"/>

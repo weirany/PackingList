@@ -17,6 +17,9 @@
 		C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */; };
 		C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
+		C4E635421A2AFD26009A067B /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4E635411A2AFD26009A067B /* ToDo.txt */; };
+		C4E635561A2C6328009A067B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635551A2C6328009A067B /* Item.swift */; };
+		C4E635581A2C6330009A067B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635571A2C6330009A067B /* Trip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripNameViewController.swift; sourceTree = "<group>"; };
 		C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeTableViewController.swift; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
+		C4E635411A2AFD26009A067B /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
+		C4E635551A2C6328009A067B /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C4E635571A2C6330009A067B /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,8 @@
 		C4023E841A005E8F00F00756 /* PackingList */ = {
 			isa = PBXGroup;
 			children = (
+				C4E635571A2C6330009A067B /* Trip.swift */,
+				C4E635551A2C6328009A067B /* Item.swift */,
 				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
 				C4023E8C1A005E8F00F00756 /* MyTripsViewController.swift */,
 				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
@@ -95,6 +103,7 @@
 				C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
 				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
+				C4E635411A2AFD26009A067B /* ToDo.txt */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -204,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E635421A2AFD26009A067B /* ToDo.txt in Resources */,
 				C4023E901A005E8F00F00756 /* Main.storyboard in Resources */,
 				C4023E951A005E8F00F00756 /* LaunchScreen.xib in Resources */,
 				C4023E921A005E8F00F00756 /* Images.xcassets in Resources */,
@@ -228,6 +238,8 @@
 				C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */,
 				C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */,
 				C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */,
+				C4E635581A2C6330009A067B /* Trip.swift in Sources */,
+				C4E635561A2C6328009A067B /* Item.swift in Sources */,
 				C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */,
 				C4023E8B1A005E8F00F00756 /* PackingList.xcdatamodeld in Sources */,
 			);
