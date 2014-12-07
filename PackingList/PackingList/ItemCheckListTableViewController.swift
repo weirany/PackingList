@@ -1,17 +1,16 @@
 //
-//  MyTripsTableViewController.swift
+//  ItemCheckListTableViewController.swift
 //  PackingList
 //
-//  Created by Ye, Weiran on 12/5/14.
+//  Created by Ye, Weiran on 12/6/14.
 //  Copyright (c) 2014 Ye, Weiran. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-class MyTripsTableViewController: UITableViewController {
-    
-    var trips = [Trip]()
+class ItemCheckListTableViewController: UITableViewController {
+
+    var tripId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,36 +38,19 @@ class MyTripsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return trips.count
+        return 0
     }
 
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
-        let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel.text = self.trips[indexPath.row].name
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        cell.detailTextLabel!.text = dateFormatter.stringFromDate(self.trips[indexPath.row].startDate)
-        
+        // Configure the cell...
+
         return cell
     }
+    */
 
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName:"Trip")
-        var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
-        if let results = fetchedResults {
-            self.trips = results
-        }
-    }
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -113,11 +95,5 @@ class MyTripsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let path = self.tableView.indexPathForSelectedRow()
-        let nextController = segue.destinationViewController as ItemCheckListTableViewController
-        nextController.tripId = trips[path!.row].tripId
-    }
 
 }

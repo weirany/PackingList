@@ -234,7 +234,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" textLabel="UaN-LG-fh7" detailTextLabel="vHO-7t-G8D" style="IBUITableViewCellStyleSubtitle" id="0dG-fX-spl">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tripCell" textLabel="UaN-LG-fh7" detailTextLabel="vHO-7t-G8D" style="IBUITableViewCellStyleSubtitle" id="0dG-fX-spl">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0dG-fX-spl" id="Fvc-zo-pNk">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -253,6 +253,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="pbb-t5-O09" kind="show" id="bxv-3N-uAr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -271,6 +274,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSk-no-qwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1051.5" y="422.5"/>
+        </scene>
+        <!--Item Check List Table View Controller-->
+        <scene sceneID="Fqv-60-hgY">
+            <objects>
+                <tableViewController id="pbb-t5-O09" customClass="ItemCheckListTableViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2sU-fX-H9N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9Li-xw-fMq">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Li-xw-fMq" id="l73-yH-77u">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pbb-t5-O09" id="Kio-u1-MPr"/>
+                            <outlet property="delegate" destination="pbb-t5-O09" id="0gQ-HO-17J"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="jmQ-ks-uQ5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22n-MN-W3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1583" y="421"/>
         </scene>
     </scenes>
 </document>
