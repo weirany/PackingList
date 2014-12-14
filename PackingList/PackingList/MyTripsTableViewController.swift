@@ -115,9 +115,11 @@ class MyTripsTableViewController: UITableViewController {
     */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let path = self.tableView.indexPathForSelectedRow()
-        let nextController = segue.destinationViewController as ItemCheckListTableViewController
-        nextController.tripId = trips[path!.row].tripId
+        if segue.identifier == "checkListSegue" {
+            let path = self.tableView.indexPathForSelectedRow()
+            let nextController = segue.destinationViewController as ItemCheckListTableViewController
+            nextController.tripId = trips[path!.row].tripId
+        }
     }
 
 }

@@ -45,9 +45,9 @@ class TripNameViewController: UIViewController {
         
         // get ready all items
         let itemEntity =  NSEntityDescription.entityForName("Item", inManagedObjectContext:managedContext)
-        let item = NSManagedObject(entity: itemEntity!, insertIntoManagedObjectContext:managedContext) as Item
         var itemArray = [Item]()
         for i in 0..<self.items.count {
+            let item = NSManagedObject(entity: itemEntity!, insertIntoManagedObjectContext:managedContext) as Item
             item.itemId = NSUUID().UUIDString
             item.name = self.items[i]
             item.isDone = 0

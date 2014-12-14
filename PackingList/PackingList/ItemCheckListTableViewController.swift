@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class ItemCheckListTableViewController: UITableViewController {
 
     var tripId = ""
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,18 +40,32 @@ class ItemCheckListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return items.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
 
-        // Configure the cell...
+        cell.textLabel.text = self.items[indexPath.row].name
 
         return cell
     }
-    */
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // load items from core data
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"Trip")
+        fetchRequest.predicate = NSPredicate(format: "tripId == %@", tripId)
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
+        if let results = fetchedResults {
+            self.items = results[0].items.allObjects as [Item]
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
