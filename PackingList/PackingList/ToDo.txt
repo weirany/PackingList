@@ -1,2 +1,3 @@
 - while adding item to the trip, at least 1 item.
 - while adding itme to the trip, hitting "back" should confirm with user, since edited list will be lost.
+- clean up all "println()", do real logging. 

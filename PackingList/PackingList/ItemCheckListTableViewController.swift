@@ -11,8 +11,9 @@ import CoreData
 
 class ItemCheckListTableViewController: UITableViewController {
 
-    var tripId = ""
-    var items = [Item]()
+    var _tripId = ""
+    var _items = [Item]()
+    let _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +41,16 @@ class ItemCheckListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return items.count
+        return _items.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel.text = self.items[indexPath.row].name
-
+        cell.textLabel.text = _items[indexPath.row].name
+        cell.accessoryType = (_items[indexPath.row].isDone == 0 ? .None : .Checkmark)
+        
         return cell
     }
 
@@ -57,16 +59,28 @@ class ItemCheckListTableViewController: UITableViewController {
         
         // load items from core data
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        let _managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName:"Trip")
-        fetchRequest.predicate = NSPredicate(format: "tripId == %@", tripId)
+        fetchRequest.predicate = NSPredicate(format: "tripId == %@", _tripId)
         var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
+        let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
-            self.items = results[0].items.allObjects as [Item]
+            _items = results[0].items.allObjects as [Item]
         }
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        _items[indexPath.row].isDone = (_items[indexPath.row].isDone == 0 ? 1 : 0)
+        
+        var error: NSError?
+        if (!_managedContext.save(&error)) && error != nil {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
