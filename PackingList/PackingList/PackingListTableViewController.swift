@@ -18,9 +18,8 @@ extension UITableView {
 
 class PackingListTableViewController: UITableViewController {
 
-    var typeSelected = [false, false, false, false]
-    var items:[String] = []
-    var newItemText = UITextField() as UITextField
+    var _items = [String]()
+    var _newItemText = UITextField() as UITextField
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,26 +29,6 @@ class PackingListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // populate items based on selected trip types
-        if typeSelected[0] { // general
-            items.append("passport")
-            items.append("toothbrush")
-        }
-        if typeSelected[1] { // business
-            items.append("business cards")
-            items.append("laptop")
-        }
-        if typeSelected[2] { // family
-            items.append("snacks")
-            items.append("toys")
-        }
-        if typeSelected[3] { // romantic
-            items.append("wine opener")
-            items.append("bathing suit")
-        }
-        
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +47,7 @@ class PackingListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return items.count + 1
+        return _items.count + 1
     }
 
     
@@ -78,11 +57,11 @@ class PackingListTableViewController: UITableViewController {
             let cell = UITableViewCell()
             
             // text box
-            self.newItemText = UITextField() as UITextField
-            self.newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
-            self.newItemText.placeholder = "add a new item..."
-            self.newItemText.borderStyle = UITextBorderStyle.RoundedRect
-            cell.contentView.addSubview(self.newItemText)
+            self._newItemText = UITextField() as UITextField
+            self._newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self._newItemText.placeholder = "add a new item..."
+            self._newItemText.borderStyle = UITextBorderStyle.RoundedRect
+            cell.contentView.addSubview(self._newItemText)
             
             // add button
             let addButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
@@ -92,7 +71,7 @@ class PackingListTableViewController: UITableViewController {
             cell.contentView.addSubview(addButton)
             
             // view dictionary (for one row)
-            let viewDict = ["newItemText":newItemText, "addButton":addButton]
+            let viewDict = ["newItemText":_newItemText, "addButton":addButton]
             
             // position
             let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("|-(15)-[newItemText][addButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
@@ -107,7 +86,7 @@ class PackingListTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
             
             // item name
-            cell.textLabel.text = self.items[indexPath.row-1]
+            cell.textLabel.text = self._items[indexPath.row-1]
             
             // delete button
             let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
@@ -130,19 +109,19 @@ class PackingListTableViewController: UITableViewController {
     }
     
     func addButtonClicked(sender:UIButton!) {
-        if self.newItemText.text == "" {
+        if self._newItemText.text == "" {
             return
         }
         else {
-            self.items.insert(self.newItemText.text!, atIndex: 0)
-            self.newItemText.text = ""
+            self._items.insert(self._newItemText.text!, atIndex: 0)
+            self._newItemText.text = ""
             self.tableView.reloadData()
         }
     }
     
     func deleteButtonClicked(sender:UIButton!) {
         let indexPath = self.tableView.indexPathForView(sender) as NSIndexPath!
-        self.items.removeAtIndex(indexPath.row-1)
+        self._items.removeAtIndex(indexPath.row-1)
         self.tableView.reloadData()
     }
 
@@ -186,7 +165,7 @@ class PackingListTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var tripNameViewController = segue.destinationViewController as TripNameViewController
-        tripNameViewController.items = self.items
+        tripNameViewController.items = self._items
     }
 
 

@@ -10,7 +10,7 @@ import UIKit
 
 class TripTypeTableViewController: UITableViewController {
     
-    var typeSelected:[Bool] = [true, false, false, false]
+    var _typeSelected:[Bool] = [true, false, false, false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,28 @@ class TripTypeTableViewController: UITableViewController {
     }
     
     @IBAction func tripTypeChanged(sender: UISwitch) {
-        typeSelected[sender.tag] = sender.on
+        _typeSelected[sender.tag] = sender.on
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var packingListViewController = segue.destinationViewController as PackingListTableViewController
-        packingListViewController.typeSelected = typeSelected
+        // populate items based on selected trip types
+        if _typeSelected[0] { // general
+            packingListViewController._items.append("passport")
+            packingListViewController._items.append("toothbrush")
+        }
+        if _typeSelected[1] { // business
+            packingListViewController._items.append("business cards")
+            packingListViewController._items.append("laptop")
+        }
+        if _typeSelected[2] { // family
+            packingListViewController._items.append("snacks")
+            packingListViewController._items.append("toys")
+        }
+        if _typeSelected[3] { // romantic
+            packingListViewController._items.append("wine opener")
+            packingListViewController._items.append("bathing suit")
+        }
     }
 
     // MARK: - Table view data source

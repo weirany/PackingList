@@ -18,6 +18,7 @@
 		C472568E1A32D261004059FA /* MyTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568D1A32D261004059FA /* MyTripsTableViewController.swift */; };
 		C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
+		C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */; };
 		C4E635421A2AFD26009A067B /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4E635411A2AFD26009A067B /* ToDo.txt */; };
 		C4E635561A2C6328009A067B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635551A2C6328009A067B /* Item.swift */; };
 		C4E635581A2C6330009A067B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635571A2C6330009A067B /* Trip.swift */; };
@@ -49,6 +50,7 @@
 		C472568D1A32D261004059FA /* MyTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsTableViewController.swift; sourceTree = "<group>"; };
 		C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCheckListTableViewController.swift; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
+		C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneExistingTableViewController.swift; sourceTree = "<group>"; };
 		C4E635411A2AFD26009A067B /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
 		C4E635551A2C6328009A067B /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C4E635571A2C6330009A067B /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
 				C4E635411A2AFD26009A067B /* ToDo.txt */,
 				C472568D1A32D261004059FA /* MyTripsTableViewController.swift */,
+				C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */,
 				C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */,
+				C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */,
 				C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */,
 				C4E635581A2C6330009A067B /* Trip.swift in Sources */,
 				C472568E1A32D261004059FA /* MyTripsTableViewController.swift in Sources */,

@@ -1,23 +1,22 @@
 //
-//  ItemCheckListTableViewController.swift
+//  CloneExistingTableViewController.swift
 //  PackingList
 //
-//  Created by Ye, Weiran on 12/6/14.
+//  Created by Ye, Weiran on 12/18/14.
 //  Copyright (c) 2014 Ye, Weiran. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class ItemCheckListTableViewController: UITableViewController {
-
-    var _tripId = ""
-    var _items = [Item]()
-    let _managedContext = NSManagedObjectContext()
+class CloneExistingTableViewController: UITableViewController {
+    
+    var _trips = [Trip]()
+    var _itemsFromSelectedTrip = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,51 +40,45 @@ class ItemCheckListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return _items.count
-    }
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
-
-        cell.textLabel.text = _items[indexPath.row].name
-        if _items[indexPath.row].isDone != 0 {
-            cell.textLabel.textColor = .grayColor()
-            cell.accessoryType = .Checkmark
-        }
-        else {
-            cell.accessoryType = .None
-        }
-        
-        return cell
+        return _trips.count
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // load items from core data
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let _managedContext = appDelegate.managedObjectContext!
+        let managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName:"Trip")
-        fetchRequest.predicate = NSPredicate(format: "tripId == %@", _tripId)
         var error: NSError?
-        let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
-            _items = results[0].items.allObjects as [Item]
+            _trips = results
         }
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as UITableViewCell
+        
+        cell.textLabel.text = _trips[indexPath.row].name
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        cell.detailTextLabel!.text = dateFormatter.stringFromDate(_trips[indexPath.row].startDate)
+        
+        return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _items[indexPath.row].isDone = (_items[indexPath.row].isDone == 0 ? 1 : 0)
-        
-        var error: NSError?
-        if (!_managedContext.save(&error)) && error != nil {
-            println("Could not save \(error), \(error?.userInfo)")
+        _itemsFromSelectedTrip.removeAll(keepCapacity: false)
+        for item in _trips[indexPath.row].items {
+            _itemsFromSelectedTrip.append(item.name)
         }
-        
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        self.performSegueWithIdentifier("cloneToPackingListSegue", sender: self)
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var packingListViewController = segue.destinationViewController as PackingListTableViewController
+        packingListViewController._items = _itemsFromSelectedTrip
+      }
     
     /*
     // Override to support conditional editing of the table view.
