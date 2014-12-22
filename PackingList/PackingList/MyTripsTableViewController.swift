@@ -11,7 +11,8 @@ import CoreData
 
 class MyTripsTableViewController: UITableViewController {
     
-    var trips = [Trip]()
+    var _trips = [Trip]()
+    var _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,33 +40,30 @@ class MyTripsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return trips.count
+        return _trips.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
         let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as UITableViewCell
-
-        cell.textLabel.text = self.trips[indexPath.row].name
+        cell.textLabel.text = self._trips[indexPath.row].name
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        cell.detailTextLabel!.text = dateFormatter.stringFromDate(self.trips[indexPath.row].startDate)
-        
+        cell.detailTextLabel!.text = dateFormatter.stringFromDate(self._trips[indexPath.row].startDate)
         return cell
     }
 
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.tableView.reloadData()
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        _managedContext = appDelegate.managedObjectContext!
+        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
         let fetchRequest = NSFetchRequest(entityName:"Trip")
+        fetchRequest.sortDescriptors = [sortDescriptor]
         var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
+        let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
-            self.trips = results
+            self._trips = results
         }
     }
     
@@ -87,8 +85,6 @@ class MyTripsTableViewController: UITableViewController {
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
-
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -109,36 +105,11 @@ class MyTripsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "checkListSegue" {
             let path = self.tableView.indexPathForSelectedRow()
             let nextController = segue.destinationViewController as ItemCheckListTableViewController
-            nextController._tripId = trips[path!.row].tripId
+            nextController._tripId = _trips[path!.row].tripId
         }
     }
 

@@ -13,7 +13,7 @@ class ItemCheckListTableViewController: UITableViewController {
 
     var _tripId = ""
     var _items = [Item]()
-    let _managedContext = NSManagedObjectContext()
+    var _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,13 +65,16 @@ class ItemCheckListTableViewController: UITableViewController {
         
         // load items from core data
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let _managedContext = appDelegate.managedObjectContext!
+        _managedContext = appDelegate.managedObjectContext!
+        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
         let fetchRequest = NSFetchRequest(entityName:"Trip")
         fetchRequest.predicate = NSPredicate(format: "tripId == %@", _tripId)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         var error: NSError?
         let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
             _items = results[0].items.allObjects as [Item]
+            _items.sort({ $0.name < $1.name })
         }
     }
 

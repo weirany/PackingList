@@ -13,6 +13,7 @@ class CloneExistingTableViewController: UITableViewController {
     
     var _trips = [Trip]()
     var _itemsFromSelectedTrip = [String]()
+    var _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +48,12 @@ class CloneExistingTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        _managedContext = appDelegate.managedObjectContext!
+        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: false)
         let fetchRequest = NSFetchRequest(entityName:"Trip")
+        fetchRequest.sortDescriptors = [sortDescriptor]
         var error: NSError?
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
+        let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
             _trips = results
         }

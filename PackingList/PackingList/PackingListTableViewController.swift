@@ -172,7 +172,7 @@ class PackingListTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var tripNameViewController = segue.destinationViewController as TripNameViewController
-        tripNameViewController.items = self._items
+        tripNameViewController._items = self._items
     }
 
 

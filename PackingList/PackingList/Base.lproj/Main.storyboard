@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Trip Type Table View Controller-->
+        <!--Trip is about-->
         <scene sceneID="wH9-9E-MDv">
             <objects>
                 <tableViewController id="Icv-DB-deV" customClass="TripTypeTableViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,7 +103,7 @@
                             <outlet property="delegate" destination="Icv-DB-deV" id="Bwp-op-RFz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="jFI-J1-qm0">
+                    <navigationItem key="navigationItem" title="Trip is about" id="jFI-J1-qm0">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="TR5-x1-IqZ">
                             <connections>
                                 <segue destination="q7c-bu-2BT" kind="show" id="2qi-9A-xQs"/>
@@ -115,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="1733.5" y="422.5"/>
         </scene>
-        <!--Packing list-->
+        <!--Things to pack-->
         <scene sceneID="Szt-c2-t33">
             <objects>
                 <tableViewController id="q7c-bu-2BT" customClass="PackingListTableViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
@@ -136,7 +136,7 @@
                             <outlet property="delegate" destination="q7c-bu-2BT" id="oUO-ns-l4U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Packing list" id="hnW-2u-lra">
+                    <navigationItem key="navigationItem" title="Things to pack" id="hnW-2u-lra">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="0iQ-XE-bR2">
                             <connections>
                                 <segue destination="zhz-0V-CUq" kind="show" id="VQL-OC-c31"/>
@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="2215.5" y="422.5"/>
         </scene>
-        <!--Trip Name View Controller-->
+        <!--Name the trip-->
         <scene sceneID="4E5-4a-nGp">
             <objects>
                 <viewController id="zhz-0V-CUq" customClass="TripNameViewController" customModule="PackingList" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OO8-mn-WZD">
+                    <navigationItem key="navigationItem" title="Name the trip" id="OO8-mn-WZD">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="8xf-6e-yDc">
                             <connections>
                                 <action selector="doneClicked:" destination="zhz-0V-CUq" id="UbJ-5r-mES"/>
@@ -341,7 +341,7 @@
                             <outlet property="delegate" destination="Zea-Rq-q4b" id="l62-0q-JCu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Clone From..." id="exV-y8-mK1"/>
+                    <navigationItem key="navigationItem" title="Clone" id="exV-y8-mK1"/>
                     <connections>
                         <segue destination="q7c-bu-2BT" kind="show" identifier="cloneToPackingListSegue" id="oq3-W3-IJW"/>
                     </connections>
@@ -352,6 +352,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oq3-W3-IJW"/>
+        <segue reference="2qi-9A-xQs"/>
     </inferredMetricsTieBreakers>
 </document>
