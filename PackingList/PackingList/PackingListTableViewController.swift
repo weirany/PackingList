@@ -116,6 +116,7 @@ class PackingListTableViewController: UITableViewController {
             self._items.insert(self._newItemText.text!, atIndex: 0)
             self._newItemText.text = ""
             self.tableView.reloadData()
+            self.navigationItem.rightBarButtonItem!.enabled = true
         }
     }
     
@@ -123,8 +124,14 @@ class PackingListTableViewController: UITableViewController {
         let indexPath = self.tableView.indexPathForView(sender) as NSIndexPath!
         self._items.removeAtIndex(indexPath.row-1)
         self.tableView.reloadData()
+        // zero item?
+        if self._items.count == 0 {
+            self.navigationItem.rightBarButtonItem!.enabled = false
+        }
     }
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

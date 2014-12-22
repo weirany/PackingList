@@ -1,4 +1,8 @@
-- while adding item to the trip, at least 1 item.
-- while adding itme to the trip, hitting "back" should confirm with user, since edited list will be lost.
-- clean up all "println()", do real logging.
 - sort all the table lists
+- get better list of pre-fill items for type of trips
+- only show option to clone when there are existing trips
+- handle all errors (the "else")
+- remove a trip from my trips list
+- put iAd
+- localize
+- double check all the exclaimation marks and question marks

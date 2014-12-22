@@ -79,10 +79,10 @@ class ItemCheckListTableViewController: UITableViewController {
         _items[indexPath.row].isDone = (_items[indexPath.row].isDone == 0 ? 1 : 0)
         
         var error: NSError?
-        if (!_managedContext.save(&error)) && error != nil {
-            println("Could not save \(error), \(error?.userInfo)")
+        if !_managedContext.save(&error) {
+            // todo: logging
+            // no good fallback handling can be done, just let the UI and core data out of sync. :(
         }
-        
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
     }
 

@@ -58,7 +58,8 @@ class TripNameViewController: UIViewController {
         // saving
         var error: NSError?
         if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+            // todo: logging
+            // no good fallback handling can be done, just jump back to home
         }
         
         self.navigationController?.popToRootViewControllerAnimated(true)
