@@ -1,4 +1,4 @@
-- get better list of pre-fill items for type of trips
+-
 - only show option to clone when there are existing trips
 - handle all errors (the "else")
 - remove a trip from my trips list
