@@ -300,7 +300,13 @@
                             <outlet property="delegate" destination="pbb-t5-O09" id="0gQ-HO-17J"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Check List" id="jmQ-ks-uQ5"/>
+                    <navigationItem key="navigationItem" title="Check List" id="jmQ-ks-uQ5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ReJ-In-OaO">
+                            <connections>
+                                <action selector="AddItem:" destination="pbb-t5-O09" id="5vU-9F-d8c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22n-MN-W3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

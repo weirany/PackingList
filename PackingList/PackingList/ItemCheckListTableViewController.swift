@@ -12,7 +12,7 @@ import CoreData
 class ItemCheckListTableViewController: UITableViewController {
 
     var _tripId = ""
-    var _items = [Item]()
+    var _trip: Trip?
     var _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
@@ -41,19 +41,19 @@ class ItemCheckListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return _items.count
+        return getAllItems().count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
-
-        cell.textLabel.text = _items[indexPath.row].name
-        if _items[indexPath.row].isDone != 0 {
+        cell.textLabel.text = getAllItems()[indexPath.row].name
+        if getAllItems()[indexPath.row].isDone != 0 {
             cell.textLabel.textColor = .grayColor()
             cell.accessoryType = .Checkmark
         }
         else {
+            cell.textLabel.textColor = .blackColor()
             cell.accessoryType = .None
         }
         
@@ -73,20 +73,19 @@ class ItemCheckListTableViewController: UITableViewController {
         var error: NSError?
         let fetchedResults = _managedContext.executeFetchRequest(fetchRequest, error: &error) as [Trip]?
         if let results = fetchedResults {
-            _items = results[0].items.allObjects as [Item]
-            _items.sort({ $0.name < $1.name })
+            _trip = results[0]
         }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _items[indexPath.row].isDone = (_items[indexPath.row].isDone == 0 ? 1 : 0)
+        getAllItems()[indexPath.row].isDone = (getAllItems()[indexPath.row].isDone == 0 ? 1 : 0)
         
         var error: NSError?
         if !_managedContext.save(&error) {
             // todo: logging
             // no good fallback handling can be done, just let the UI and core data out of sync. :(
         }
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 
     
@@ -98,18 +97,58 @@ class ItemCheckListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            _managedContext.deleteObject(getAllItems()[indexPath.row])
+            // saving
+            var error: NSError?
+            if !_managedContext.save(&error) {
+                // todo: logging. no good fallback handling can be done 
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
+    @IBAction func AddItem(sender: UIBarButtonItem) {
+        var prompt = UIAlertController(title: "New item", message: "", preferredStyle: .Alert)
+        prompt.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "something more to pack"
+        })
+        prompt.addAction(UIAlertAction(title: "Ok", style: .Default, handler:{(alertAction:UIAlertAction!) in
+            let text = (prompt.textFields![0] as UITextField).text
+            if text != "" {
+                self.addOneItem(text)
+                self.tableView.reloadData()
+            }
+        }))
+        self.presentViewController(prompt, animated: true, completion: nil)
+    }
+    
+    func getAllItems()-> [Item] {
+        var items = _trip!.items.allObjects as [Item]
+        items.sort({ $0.name < $1.name })
+        return items
+    }
+    
+    func addOneItem(newItemName: String) {
+        let itemEntity =  NSEntityDescription.entityForName("Item", inManagedObjectContext:_managedContext)
+        let item = NSManagedObject(entity: itemEntity!, insertIntoManagedObjectContext:_managedContext) as Item
+        item.itemId = NSUUID().UUIDString
+        item.name = newItemName
+        item.isDone = 0
+        var items = _trip?.items.allObjects as [Item]
+        items.append(item)
+        _trip?.items = NSSet(array: items)
+        var error: NSError?
+        if !_managedContext.save(&error) {
+            // todo: logging. no good fallback handling can be done
+        }
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
