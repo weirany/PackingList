@@ -21,7 +21,6 @@
 		C47C80301A48EC8A0044C74C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802E1A48EC8A0044C74C /* Fabric.framework */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
 		C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */; };
-		C4E635421A2AFD26009A067B /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4E635411A2AFD26009A067B /* ToDo.txt */; };
 		C4E635561A2C6328009A067B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635551A2C6328009A067B /* Item.swift */; };
 		C4E635581A2C6330009A067B /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635571A2C6330009A067B /* Trip.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +54,6 @@
 		C47C802E1A48EC8A0044C74C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
 		C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneExistingTableViewController.swift; sourceTree = "<group>"; };
-		C4E635411A2AFD26009A067B /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
 		C4E635551A2C6328009A067B /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C4E635571A2C6330009A067B /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +111,6 @@
 				C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
 				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
-				C4E635411A2AFD26009A067B /* ToDo.txt */,
 				C472568D1A32D261004059FA /* MyTripsTableViewController.swift */,
 				C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */,
 			);
@@ -197,9 +194,11 @@
 				TargetAttributes = {
 					C4023E811A005E8F00F00756 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = SU48UGSAPP;
 					};
 					C4023E991A005E8F00F00756 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = SU48UGSAPP;
 						TestTargetID = C4023E811A005E8F00F00756;
 					};
 				};
@@ -228,7 +227,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E635421A2AFD26009A067B /* ToDo.txt in Resources */,
 				C4023E901A005E8F00F00756 /* Main.storyboard in Resources */,
 				C4023E951A005E8F00F00756 /* LaunchScreen.xib in Resources */,
 				C4023E921A005E8F00F00756 /* Images.xcassets in Resources */,
@@ -425,6 +423,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -436,6 +436,7 @@
 				INFOPLIST_FILE = PackingListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PackingList.app/PackingList";
 			};
 			name = Debug;
@@ -444,6 +445,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -451,6 +454,7 @@
 				INFOPLIST_FILE = PackingListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PackingList.app/PackingList";
 			};
 			name = Release;

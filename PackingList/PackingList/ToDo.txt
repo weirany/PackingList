@@ -1,7 +1,0 @@
--
-- only show option to clone when there are existing trips
-- handle all errors (the "else")
-- remove a trip from my trips list
-- put iAd
-- localize
-- double check all the exclaimation marks and question marks

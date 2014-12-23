@@ -59,7 +59,7 @@ class PackingListTableViewController: UITableViewController {
             // text box
             self._newItemText = UITextField() as UITextField
             self._newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
-            self._newItemText.placeholder = "add a new item..."
+            self._newItemText.placeholder = "add more items now, or later..."
             self._newItemText.borderStyle = UITextBorderStyle.RoundedRect
             cell.contentView.addSubview(self._newItemText)
             

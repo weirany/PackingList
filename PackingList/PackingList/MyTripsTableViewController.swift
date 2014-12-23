@@ -68,21 +68,27 @@ class MyTripsTableViewController: UITableViewController {
     }
     
     @IBAction func addButtonClicked(sender: UIBarButtonItem) {
-        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let callFromScratch = { (action:UIAlertAction!) -> Void in
+        // don't show choices when there is no existing trip
+        if _trips.count == 0 {
             self.performSegueWithIdentifier("fromScratchSegue", sender: self)
         }
-        
-        let callClone = { (action:UIAlertAction!) -> Void in
-            self.performSegueWithIdentifier("cloneSegue", sender: self)
+        else {
+            let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            
+            let callFromScratch = { (action:UIAlertAction!) -> Void in
+                self.performSegueWithIdentifier("fromScratchSegue", sender: self)
+            }
+            
+            let callClone = { (action:UIAlertAction!) -> Void in
+                self.performSegueWithIdentifier("cloneSegue", sender: self)
+            }
+            
+            optionMenu.addAction(UIAlertAction(title: "Create new from scratch", style: .Default, handler: callFromScratch))
+            optionMenu.addAction(UIAlertAction(title: "By cloning an existing trip", style: .Default, handler: callClone))
+            optionMenu.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            
+            self.presentViewController(optionMenu, animated: true, completion: nil)
         }
-        
-        optionMenu.addAction(UIAlertAction(title: "Create new from scratch", style: .Default, handler: callFromScratch))
-        optionMenu.addAction(UIAlertAction(title: "By cloning an existing trip", style: .Default, handler: callClone))
-        optionMenu.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
     /*
