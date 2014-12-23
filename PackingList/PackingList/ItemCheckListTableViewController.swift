@@ -17,30 +17,19 @@ class ItemCheckListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return getAllItems().count
     }
 
@@ -87,16 +76,6 @@ class ItemCheckListTableViewController: UITableViewController {
         }
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
-
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -117,6 +96,7 @@ class ItemCheckListTableViewController: UITableViewController {
         var prompt = UIAlertController(title: "New item", message: "", preferredStyle: .Alert)
         prompt.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
             textField.placeholder = "something more to pack"
+            textField.autocorrectionType =  .Default
         })
         prompt.addAction(UIAlertAction(title: "Ok", style: .Default, handler:{(alertAction:UIAlertAction!) in
             let text = (prompt.textFields![0] as UITextField).text
@@ -129,8 +109,11 @@ class ItemCheckListTableViewController: UITableViewController {
     }
     
     func getAllItems()-> [Item] {
-        var items = _trip!.items.allObjects as [Item]
-        items.sort({ $0.name < $1.name })
+        var items = [Item]()
+        if let t = _trip {
+            items = t.items.allObjects as [Item]
+            items.sort({ $0.name < $1.name })
+        }
         return items
     }
     
@@ -140,38 +123,12 @@ class ItemCheckListTableViewController: UITableViewController {
         item.itemId = NSUUID().UUIDString
         item.name = newItemName
         item.isDone = 0
-        var items = _trip?.items.allObjects as [Item]
+        var items = _trip!.items.allObjects as [Item]
         items.append(item)
-        _trip?.items = NSSet(array: items)
+        _trip!.items = NSSet(array: items)
         var error: NSError?
         if !_managedContext.save(&error) {
             // todo: logging. no good fallback handling can be done
         }
     }
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
