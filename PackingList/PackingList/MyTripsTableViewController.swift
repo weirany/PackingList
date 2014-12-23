@@ -56,6 +56,30 @@ class MyTripsTableViewController: BaseTableViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "checkListSegue" {
+            let path = self.tableView.indexPathForSelectedRow()
+            let nextController = segue.destinationViewController as ItemCheckListTableViewController
+            nextController._tripId = _trips[path!.row].tripId
+        }
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            _managedContext.deleteObject(_trips[indexPath.row])
+            _trips.removeAtIndex(indexPath.row)
+            // saving
+            var error: NSError?
+            if !_managedContext.save(&error) {
+                // todo: logging. no good fallback handling can be done
+            }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     @IBAction func addButtonClicked(sender: UIBarButtonItem) {
         // don't show choices when there is no existing trip
         if _trips.count == 0 {
@@ -80,12 +104,5 @@ class MyTripsTableViewController: BaseTableViewController {
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "checkListSegue" {
-            let path = self.tableView.indexPathForSelectedRow()
-            let nextController = segue.destinationViewController as ItemCheckListTableViewController
-            nextController._tripId = _trips[path!.row].tripId
-        }
-    }
 
 }
