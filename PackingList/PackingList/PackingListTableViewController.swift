@@ -16,7 +16,7 @@ extension UITableView {
     }
 }
 
-class PackingListTableViewController: UITableViewController {
+class PackingListTableViewController: BaseTableViewController {
 
     var _items = [String]()
     var _newItemText = UITextField() as UITextField

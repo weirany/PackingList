@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemCheckListTableViewController: UITableViewController {
+class ItemCheckListTableViewController: BaseTableViewController {
 
     var _tripId = ""
     var _trip: Trip?

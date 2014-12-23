@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripTypeTableViewController: UITableViewController {
+class TripTypeTableViewController: BaseTableViewController {
     
     var _typeSelected:[Bool] = [true, false, false, false]
     let _prefilledItemsGeneral = ["clothes","money","passport/id","personal hygiene","medicines","first aid","books","chargers","sunglasses"]

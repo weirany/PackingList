@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MyTripsTableViewController: UITableViewController {
+class MyTripsTableViewController: BaseTableViewController {
     
     var _trips = [Trip]()
     var _managedContext = NSManagedObjectContext()

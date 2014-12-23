@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CloneExistingTableViewController: UITableViewController {
+class CloneExistingTableViewController: BaseTableViewController {
     
     var _trips = [Trip]()
     var _itemsFromSelectedTrip = [String]()

@@ -19,6 +19,9 @@
 		C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */; };
 		C47C802F1A48EC8A0044C74C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802D1A48EC8A0044C74C /* Crashlytics.framework */; };
 		C47C80301A48EC8A0044C74C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802E1A48EC8A0044C74C /* Fabric.framework */; };
+		C48080901A4A1C100041C4BA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C480808F1A4A1C100041C4BA /* iAd.framework */; };
+		C48080941A4A1D530041C4BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48080931A4A1D530041C4BA /* BaseViewController.swift */; };
+		C48080981A4A1DF10041C4BA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
 		C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */; };
 		C4E635561A2C6328009A067B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635551A2C6328009A067B /* Item.swift */; };
@@ -52,6 +55,9 @@
 		C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCheckListTableViewController.swift; sourceTree = "<group>"; };
 		C47C802D1A48EC8A0044C74C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
 		C47C802E1A48EC8A0044C74C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
+		C480808F1A4A1C100041C4BA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		C48080931A4A1D530041C4BA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
 		C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneExistingTableViewController.swift; sourceTree = "<group>"; };
 		C4E635551A2C6328009A067B /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48080901A4A1C100041C4BA /* iAd.framework in Frameworks */,
 				C47C802F1A48EC8A0044C74C /* Crashlytics.framework in Frameworks */,
 				C47C80301A48EC8A0044C74C /* Fabric.framework in Frameworks */,
 			);
@@ -99,20 +106,15 @@
 		C4023E841A005E8F00F00756 /* PackingList */ = {
 			isa = PBXGroup;
 			children = (
-				C4E635571A2C6330009A067B /* Trip.swift */,
-				C4E635551A2C6328009A067B /* Item.swift */,
+				C480809B1A4A1FB30041C4BA /* ViewControllers */,
+				C48080991A4A1F890041C4BA /* BaseViewControllers */,
+				C480809A1A4A1F950041C4BA /* CoreDataModels */,
 				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
 				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
-				C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */,
-				C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */,
 				C4023E911A005E8F00F00756 /* Images.xcassets */,
 				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
 				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
-				C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
-				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
-				C472568D1A32D261004059FA /* MyTripsTableViewController.swift */,
-				C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -120,6 +122,7 @@
 		C4023E851A005E8F00F00756 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C480808F1A4A1C100041C4BA /* iAd.framework */,
 				C47C802E1A48EC8A0044C74C /* Fabric.framework */,
 				C47C802D1A48EC8A0044C74C /* Crashlytics.framework */,
 				C4023E861A005E8F00F00756 /* Info.plist */,
@@ -142,6 +145,37 @@
 				C4023E9F1A005E8F00F00756 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C48080991A4A1F890041C4BA /* BaseViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C48080931A4A1D530041C4BA /* BaseViewController.swift */,
+				C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */,
+			);
+			name = BaseViewControllers;
+			sourceTree = "<group>";
+		};
+		C480809A1A4A1F950041C4BA /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				C4E635571A2C6330009A067B /* Trip.swift */,
+				C4E635551A2C6328009A067B /* Item.swift */,
+			);
+			name = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		C480809B1A4A1FB30041C4BA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C472568D1A32D261004059FA /* MyTripsTableViewController.swift */,
+				C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */,
+				C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */,
+				C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */,
+				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
+				C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +299,11 @@
 			files = (
 				C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */,
 				C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */,
+				C48080981A4A1DF10041C4BA /* BaseTableViewController.swift in Sources */,
 				C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */,
 				C4023E881A005E8F00F00756 /* AppDelegate.swift in Sources */,
 				C4E635581A2C6330009A067B /* Trip.swift in Sources */,
+				C48080941A4A1D530041C4BA /* BaseViewController.swift in Sources */,
 				C472568E1A32D261004059FA /* MyTripsTableViewController.swift in Sources */,
 				C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */,
 				C4E635561A2C6328009A067B /* Item.swift in Sources */,

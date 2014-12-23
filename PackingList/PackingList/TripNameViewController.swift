@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TripNameViewController: UIViewController {
+class TripNameViewController: BaseViewController {
 
     @IBOutlet weak var tripName: UITextField!
     @IBOutlet weak var tripStartDate: UIDatePicker!
