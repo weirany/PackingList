@@ -112,7 +112,7 @@ class ItemCheckListTableViewController: UITableViewController {
         var items = [Item]()
         if let t = _trip {
             items = t.items.allObjects as [Item]
-            items.sort({ $0.name < $1.name })
+            items.sort({ $0.name.lowercaseString < $1.name.lowercaseString })
         }
         return items
     }
