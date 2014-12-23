@@ -17,6 +17,8 @@
 		C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */; };
 		C472568E1A32D261004059FA /* MyTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568D1A32D261004059FA /* MyTripsTableViewController.swift */; };
 		C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */; };
+		C47C802F1A48EC8A0044C74C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802D1A48EC8A0044C74C /* Crashlytics.framework */; };
+		C47C80301A48EC8A0044C74C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802E1A48EC8A0044C74C /* Fabric.framework */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
 		C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */; };
 		C4E635421A2AFD26009A067B /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C4E635411A2AFD26009A067B /* ToDo.txt */; };
@@ -49,6 +51,8 @@
 		C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeTableViewController.swift; sourceTree = "<group>"; };
 		C472568D1A32D261004059FA /* MyTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsTableViewController.swift; sourceTree = "<group>"; };
 		C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCheckListTableViewController.swift; sourceTree = "<group>"; };
+		C47C802D1A48EC8A0044C74C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
+		C47C802E1A48EC8A0044C74C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
 		C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneExistingTableViewController.swift; sourceTree = "<group>"; };
 		C4E635411A2AFD26009A067B /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47C802F1A48EC8A0044C74C /* Crashlytics.framework in Frameworks */,
+				C47C80301A48EC8A0044C74C /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,8 @@
 		C4023E851A005E8F00F00756 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C47C802E1A48EC8A0044C74C /* Fabric.framework */,
+				C47C802D1A48EC8A0044C74C /* Crashlytics.framework */,
 				C4023E861A005E8F00F00756 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -149,6 +157,7 @@
 				C4023E7E1A005E8F00F00756 /* Sources */,
 				C4023E7F1A005E8F00F00756 /* Frameworks */,
 				C4023E801A005E8F00F00756 /* Resources */,
+				C47C802C1A48EC320044C74C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -234,6 +243,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C47C802C1A48EC320044C74C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 3ee990dadc1579049597bb4f6f438ce8854f3f54 f95d351a8161e0d03155aa58e441373631274f24c4ebe56405e82c6e89ca9210";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4023E7E1A005E8F00F00756 /* Sources */ = {
@@ -372,6 +397,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PackingList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,6 +411,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PackingList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
