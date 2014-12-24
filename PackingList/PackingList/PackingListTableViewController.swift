@@ -23,6 +23,14 @@ class PackingListTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // zero item?
+        if self._items.count == 0 {
+            self.navigationItem.rightBarButtonItem!.enabled = false
+        }
+        else {
+            self.navigationItem.rightBarButtonItem!.enabled = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
