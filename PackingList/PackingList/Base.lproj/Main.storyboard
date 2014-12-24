@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wxz-Zt-b1N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Trip is about-->
@@ -20,19 +21,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wQQ-h9-1gX" id="ETq-2Y-DRk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="General" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pk-LB-wSm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pk-LB-wSm">
                                                     <rect key="frame" x="8" y="11" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ld-5Z-utj">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ld-5Z-utj">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="tripTypeChanged:" destination="Icv-DB-deV" eventType="valueChanged" id="Bfh-xA-ref"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9ld-5Z-utj" firstAttribute="trailing" secondItem="ETq-2Y-DRk" secondAttribute="trailingMargin" id="AaY-33-5kc"/>
+                                                <constraint firstItem="4pk-LB-wSm" firstAttribute="leading" secondItem="ETq-2Y-DRk" secondAttribute="leadingMargin" id="HOW-fj-iyT"/>
+                                                <constraint firstItem="4pk-LB-wSm" firstAttribute="centerY" secondItem="ETq-2Y-DRk" secondAttribute="centerY" id="iY0-Ju-Znu"/>
+                                                <constraint firstItem="9ld-5Z-utj" firstAttribute="centerY" secondItem="4pk-LB-wSm" secondAttribute="centerY" id="mGY-2e-dqB"/>
+                                                <constraint firstItem="4pk-LB-wSm" firstAttribute="top" secondItem="ETq-2Y-DRk" secondAttribute="topMargin" constant="3" id="w2A-T3-NZG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U4q-Tk-IOD">
@@ -40,19 +48,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U4q-Tk-IOD" id="twz-Do-eKs">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyF-je-EPQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyF-je-EPQ">
                                                     <rect key="frame" x="8" y="11" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aHy-e3-khZ">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aHy-e3-khZ">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="tripTypeChanged:" destination="Icv-DB-deV" eventType="valueChanged" id="qcL-6T-6W3"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KyF-je-EPQ" firstAttribute="centerY" secondItem="twz-Do-eKs" secondAttribute="centerY" id="4mK-uJ-bBm"/>
+                                                <constraint firstItem="KyF-je-EPQ" firstAttribute="top" secondItem="twz-Do-eKs" secondAttribute="topMargin" constant="3" id="E4R-0q-3gG"/>
+                                                <constraint firstItem="KyF-je-EPQ" firstAttribute="centerY" secondItem="aHy-e3-khZ" secondAttribute="centerY" id="K6p-il-koj"/>
+                                                <constraint firstItem="KyF-je-EPQ" firstAttribute="leading" secondItem="twz-Do-eKs" secondAttribute="leadingMargin" id="jW2-hh-eUa"/>
+                                                <constraint firstItem="aHy-e3-khZ" firstAttribute="trailing" secondItem="twz-Do-eKs" secondAttribute="trailingMargin" id="upz-0c-sjL"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Mnq-cG-EtS">
@@ -60,19 +75,29 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mnq-cG-EtS" id="jdo-wk-j15">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Business" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-Yt-iLB">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-Yt-iLB">
                                                     <rect key="frame" x="8" y="11" width="70" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="Tki-vu-3Id"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eGe-9a-bie">
+                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eGe-9a-bie">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="tripTypeChanged:" destination="Icv-DB-deV" eventType="valueChanged" id="UCw-tq-ix5"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eGe-9a-bie" firstAttribute="centerY" secondItem="jdo-wk-j15" secondAttribute="centerY" id="CWo-0F-dJE"/>
+                                                <constraint firstItem="eGe-9a-bie" firstAttribute="trailing" secondItem="jdo-wk-j15" secondAttribute="trailingMargin" id="Ias-ud-s7N"/>
+                                                <constraint firstItem="gx7-Yt-iLB" firstAttribute="top" secondItem="jdo-wk-j15" secondAttribute="topMargin" constant="3" id="mLf-Yu-Byb"/>
+                                                <constraint firstItem="gx7-Yt-iLB" firstAttribute="centerY" secondItem="eGe-9a-bie" secondAttribute="centerY" id="u2L-SD-Emy"/>
+                                                <constraint firstItem="gx7-Yt-iLB" firstAttribute="leading" secondItem="jdo-wk-j15" secondAttribute="leadingMargin" id="wka-0P-OrD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hAU-fW-d7E">
@@ -80,19 +105,29 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hAU-fW-d7E" id="sDb-1A-TcK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Romantic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oU-Ku-wn4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Romantic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oU-Ku-wn4">
                                                     <rect key="frame" x="8" y="11" width="74" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="74" id="FGa-bm-IkV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="74J-rB-gt1">
+                                                <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="74J-rB-gt1">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="tripTypeChanged:" destination="Icv-DB-deV" eventType="valueChanged" id="x10-mP-TfY"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8oU-Ku-wn4" firstAttribute="centerY" secondItem="74J-rB-gt1" secondAttribute="centerY" id="BaX-fm-74b"/>
+                                                <constraint firstItem="8oU-Ku-wn4" firstAttribute="centerY" secondItem="sDb-1A-TcK" secondAttribute="centerY" id="UXf-xJ-KHz"/>
+                                                <constraint firstItem="8oU-Ku-wn4" firstAttribute="leading" secondItem="sDb-1A-TcK" secondAttribute="leadingMargin" id="c7M-GC-qf1"/>
+                                                <constraint firstItem="8oU-Ku-wn4" firstAttribute="top" secondItem="sDb-1A-TcK" secondAttribute="topMargin" constant="3" id="mMt-lD-l00"/>
+                                                <constraint firstItem="74J-rB-gt1" firstAttribute="trailing" secondItem="sDb-1A-TcK" secondAttribute="trailingMargin" id="wz0-7R-kcv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
