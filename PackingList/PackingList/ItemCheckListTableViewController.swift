@@ -38,7 +38,7 @@ class ItemCheckListTableViewController: BaseTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel.text = getAllItems()[indexPath.row].name
         if getAllItems()[indexPath.row].isDone != 0 {
-            cell.textLabel.textColor = .grayColor()
+            cell.textLabel.textColor = .lightGrayColor()
             cell.accessoryType = .Checkmark
         }
         else {

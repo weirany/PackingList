@@ -34,11 +34,11 @@ class TripTypeTableViewController: BaseTableViewController {
         if _typeSelected[0] { // general
             packingListViewController._items += _prefilledItemsGeneral
         }
-        if _typeSelected[1] { // business
-            packingListViewController._items += _prefilledItemsBusiness
-        }
-        if _typeSelected[2] { // family
+        if _typeSelected[1] { // family
             packingListViewController._items += _prefilledItemsFamily
+        }
+        if _typeSelected[2] { // business
+            packingListViewController._items += _prefilledItemsBusiness
         }
         if _typeSelected[3] { // romantic
             packingListViewController._items += _prefilledItemsRomantic
