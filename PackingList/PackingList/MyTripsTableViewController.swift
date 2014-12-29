@@ -89,9 +89,12 @@ class MyTripsTableViewController: BaseTableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         cell.detailTextLabel!.text = dateFormatter.stringFromDate(self._trips[indexPath.row].startDate)
+        if tripAllPacked(self._trips[indexPath.row]) {
+            cell.detailTextLabel!.text! += " (👏 All Packed!)"
+        }
         return cell
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
@@ -155,5 +158,17 @@ class MyTripsTableViewController: BaseTableViewController {
         }
     }
 
+    func tripAllPacked (trip: Trip)-> Bool {
+        var result = true
+        for item in trip.items {
+            if let i = item as? Item {
+                if i.isDone == 0 {
+                    result = false
+                    break
+                }
+            }
+        }
+        return result
+    }
 
 }
