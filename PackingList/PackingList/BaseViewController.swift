@@ -23,7 +23,11 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(animated: Bool) {
+        let currentRateAppCountDown = NSUserDefaults.standardUserDefaults().integerForKey("RateAppCountDown")
+        NSUserDefaults.standardUserDefaults().setInteger(currentRateAppCountDown-1, forKey: "RateAppCountDown")
+    }
+    
     /*
     // MARK: - Navigation
 

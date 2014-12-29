@@ -14,8 +14,59 @@ class MyTripsTableViewController: BaseTableViewController {
     var _trips = [Trip]()
     var _managedContext = NSManagedObjectContext()
     
+    // app info
+    let _appId = "954200327"
+    let _appName = "Packing List"
+    let _appContactEmail = "talkanpackinglist@gmail.com"
+    let _defaultRateAppCountDownTrigger = -300
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // prompt to rate the app? 
+        // Logic: 
+        // - count down starts at zero
+        // - count every ViewDidLoad (minus 1 every time)
+        // - only triggered if count-down becomes < (default trigger)
+        // Options are:
+        // - Leave 5-star rating -> 1) set count-down to Int.max; 2) go to review 
+        // - Not 5-star yet, suggestion -> 1) set count-down to 10x; 2) go to email 
+        // - Remind me later -> reset count-down to zero
+        // - Don't show again -> set count-down to Int.max
+        let currentRateAppCountDown = NSUserDefaults.standardUserDefaults().integerForKey("RateAppCountDown")
+        
+        if currentRateAppCountDown < _defaultRateAppCountDownTrigger {
+            let optionMenu = UIAlertController(title: "Rate me", message: "If you enjoy using this app, would you mind taking a moment to rate it? That helps more people find out and use this app. Thanks for your support! ", preferredStyle: .ActionSheet)
+            
+            let rateTheApp = { (action:UIAlertAction!) -> Void in
+                NSUserDefaults.standardUserDefaults().setInteger(Int.max, forKey: "RateAppCountDown")
+                let templateReviewURLiOS8 = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=" + self._appId +  "&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
+                UIApplication.sharedApplication().openURL(NSURL(string: templateReviewURLiOS8)!)
+            }
+            
+            let emailSuggestion = { (action:UIAlertAction!) -> Void in
+                let newCountDown = (0 - self._defaultRateAppCountDownTrigger)*10
+                NSUserDefaults.standardUserDefaults().setInteger(newCountDown, forKey: "RateAppCountDown")
+                let mailToUrl = "mailto:" + self._appContactEmail + "?Subject="
+                    + self._appName.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())! + "%20suggestion"
+                UIApplication.sharedApplication().openURL(NSURL(string: mailToUrl)!)
+            }
+
+            let remindLater = { (action:UIAlertAction!) -> Void in
+                NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "RateAppCountDown")
+            }
+
+            let dontShow = { (action:UIAlertAction!) -> Void in
+                NSUserDefaults.standardUserDefaults().setInteger(Int.max, forKey: "RateAppCountDown")
+            }
+
+            optionMenu.addAction(UIAlertAction(title: "Rate me 5-start", style: .Default, handler: rateTheApp))
+            optionMenu.addAction(UIAlertAction(title: "Not 5-start yet, email my suggestion", style: .Default, handler: emailSuggestion))
+            optionMenu.addAction(UIAlertAction(title: "Remind me later", style: .Default, handler: remindLater))
+            optionMenu.addAction(UIAlertAction(title: "Don't show again", style: .Default, handler: dontShow))
+            
+            self.presentViewController(optionMenu, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

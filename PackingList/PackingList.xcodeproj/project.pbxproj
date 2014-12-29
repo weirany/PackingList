@@ -113,7 +113,6 @@
 				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
 				C4023E911A005E8F00F00756 /* Images.xcassets */,
 				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
-				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
 			);
 			path = PackingList;
@@ -159,6 +158,7 @@
 		C480809A1A4A1F950041C4BA /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
 				C4E635571A2C6330009A067B /* Trip.swift */,
 				C4E635551A2C6328009A067B /* Item.swift */,
 			);
