@@ -9,6 +9,14 @@
 import UIKit
 import iAd
 
+// refer to: http://stackoverflow.com/a/9274863/346676
+extension UITableView {
+    func indexPathForView (view : UIView) -> NSIndexPath? {
+        let location = view.convertPoint(CGPointZero, toView:self)
+        return indexPathForRowAtPoint(location)
+    }
+}
+
 class BaseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -32,6 +40,7 @@ class BaseTableViewController: UITableViewController {
         let currentRateAppCountDown = NSUserDefaults.standardUserDefaults().integerForKey("RateAppCountDown")
         NSUserDefaults.standardUserDefaults().setInteger(currentRateAppCountDown-1, forKey: "RateAppCountDown")
     }
+
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

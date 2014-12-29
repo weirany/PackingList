@@ -13,6 +13,7 @@ class ItemCheckListTableViewController: BaseTableViewController {
 
     var _tripId = ""
     var _trip: Trip?
+    var _newItemText = UITextField() as UITextField
     var _managedContext = NSManagedObjectContext()
     
     override func viewDidLoad() {
@@ -30,23 +31,77 @@ class ItemCheckListTableViewController: BaseTableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getAllItems().count
+        return getAllItems().count + 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = getAllItems()[indexPath.row].name
-        if getAllItems()[indexPath.row].isDone != 0 {
-            cell.textLabel.textColor = .lightGrayColor()
-            cell.accessoryType = .Checkmark
+        // handle input (new item) row
+        if indexPath.row == 0 {
+            let cell = UITableViewCell()
+            
+            // text box
+            self._newItemText = UITextField() as UITextField
+            self._newItemText.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self._newItemText.placeholder = "add more items now, or later..."
+            self._newItemText.borderStyle = UITextBorderStyle.RoundedRect
+            cell.contentView.addSubview(self._newItemText)
+            
+            // add button
+            let addButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            addButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+            addButton.setTitle("➕", forState: UIControlState.Normal)
+            addButton.addTarget(self, action: "addButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.contentView.addSubview(addButton)
+            
+            // view dictionary (for one row)
+            let viewDict = ["newItemText":_newItemText, "addButton":addButton]
+            
+            // position
+            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("|-(15)-[newItemText][addButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
+            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[newItemText]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
+            cell.addConstraints(cell_c_h)
+            cell.addConstraints(cell_c_v)
+            
+            return cell
         }
-        else {
-            cell.textLabel.textColor = .blackColor()
-            cell.accessoryType = .None
+        else { // all other item rows
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
+            
+            // item name
+            let normalAttributes = [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue]
+            let strikeThroughAttributes = [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+            var labelString:NSAttributedString
+            // item marked as done?
+            if getAllItems()[indexPath.row-1].isDone == 0 {
+                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: normalAttributes)
+                cell.textLabel.textColor = .blackColor()
+            }
+            else {
+                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: strikeThroughAttributes)
+                cell.textLabel.textColor = .lightGrayColor()
+            }
+            cell.textLabel.attributedText = labelString
+            
+            // delete button
+            let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+            deleteButton.setTitle("❌", forState: UIControlState.Normal)
+            deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.contentView.addSubview(deleteButton)
+            
+            // view dictionary (for one row)
+            let viewDict = ["deleteButton":deleteButton]
+            
+            // position
+            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
+            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
+            cell.addConstraints(cell_c_h)
+            cell.addConstraints(cell_c_v)
+            
+            return cell
         }
-        
-        return cell
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -67,7 +122,7 @@ class ItemCheckListTableViewController: BaseTableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        getAllItems()[indexPath.row].isDone = (getAllItems()[indexPath.row].isDone == 0 ? 1 : 0)
+        getAllItems()[indexPath.row-1].isDone = (getAllItems()[indexPath.row-1].isDone == 0 ? 1 : 0)
         
         var error: NSError?
         if !_managedContext.save(&error) {
@@ -77,44 +132,15 @@ class ItemCheckListTableViewController: BaseTableViewController {
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            _managedContext.deleteObject(getAllItems()[indexPath.row])
-            // saving
-            var error: NSError?
-            if !_managedContext.save(&error) {
-                // todo: logging. no good fallback handling can be done 
-            }
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-
-    @IBAction func AddItem(sender: UIBarButtonItem) {
-        var prompt = UIAlertController(title: "New item", message: "", preferredStyle: .Alert)
-        prompt.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.placeholder = "something more to pack"
-            textField.autocorrectionType =  .Default
-        })
-        prompt.addAction(UIAlertAction(title: "Ok", style: .Default, handler:{(alertAction:UIAlertAction!) in
-            let text = (prompt.textFields![0] as UITextField).text
-            if text != "" {
-                self.addOneItem(text)
-                self.tableView.reloadData()
-            }
-        }))
-        self.presentViewController(prompt, animated: true, completion: nil)
-    }
-    
-    func getAllItems()-> [Item] {
-        var items = [Item]()
-        if let t = _trip {
-            items = t.items.allObjects as [Item]
-            items.sort({ $0.name.lowercaseString < $1.name.lowercaseString })
+    func addButtonClicked(sender:UIButton!) {
+        if self._newItemText.text == "" {
+            return
         }
-        return items
+        else {
+            addOneItem(self._newItemText.text)
+            self._newItemText.text = ""
+            self.tableView.reloadData()
+        }
     }
     
     func addOneItem(newItemName: String) {
@@ -131,4 +157,26 @@ class ItemCheckListTableViewController: BaseTableViewController {
             // todo: logging. no good fallback handling can be done
         }
     }
+    
+    func deleteButtonClicked(sender:UIButton!) {
+        let indexPath = self.tableView.indexPathForView(sender) as NSIndexPath!
+        
+        _managedContext.deleteObject(getAllItems()[indexPath.row-1])
+        // saving
+        var error: NSError?
+        if !_managedContext.save(&error) {
+            // todo: logging. no good fallback handling can be done
+        }
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    func getAllItems()-> [Item] {
+        var items = [Item]()
+        if let t = _trip {
+            items = t.items.allObjects as [Item]
+            items.sort({ $0.name.lowercaseString < $1.name.lowercaseString })
+        }
+        return items
+    }
+
 }

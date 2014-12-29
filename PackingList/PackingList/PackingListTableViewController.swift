@@ -8,14 +8,6 @@
 
 import UIKit
 
-// refer to: http://stackoverflow.com/a/9274863/346676
-extension UITableView {
-    func indexPathForView (view : UIView) -> NSIndexPath? {
-        let location = view.convertPoint(CGPointZero, toView:self)
-        return indexPathForRowAtPoint(location)
-    }
-}
-
 class PackingListTableViewController: BaseTableViewController {
 
     var _items = [String]()

@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listCell" id="4Fo-d5-Ayr">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="listCell" id="4Fo-d5-Ayr">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Fo-d5-Ayr" id="gdg-DF-HNQ">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -335,13 +335,7 @@
                             <outlet property="delegate" destination="pbb-t5-O09" id="0gQ-HO-17J"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Check List" id="jmQ-ks-uQ5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ReJ-In-OaO">
-                            <connections>
-                                <action selector="AddItem:" destination="pbb-t5-O09" id="5vU-9F-d8c"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Check List" id="jmQ-ks-uQ5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22n-MN-W3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
