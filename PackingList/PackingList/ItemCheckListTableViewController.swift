@@ -77,11 +77,11 @@ class ItemCheckListTableViewController: BaseTableViewController {
             let strikeThroughAttributes = [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
             var labelString:NSAttributedString
             if isDone {
-                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: strikeThroughAttributes)
+                labelString = NSAttributedString(string: "☑︎  " + getAllItems()[indexPath.row-1].name, attributes: strikeThroughAttributes)
                 cell.textLabel.textColor = .lightGrayColor()
             }
             else {
-                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: normalAttributes)
+                labelString = NSAttributedString(string: "☐  " + getAllItems()[indexPath.row-1].name, attributes: normalAttributes)
                 cell.textLabel.textColor = .blackColor()
             }
             cell.textLabel.attributedText = labelString
