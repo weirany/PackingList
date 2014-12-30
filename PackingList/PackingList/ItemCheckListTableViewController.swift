@@ -69,26 +69,35 @@ class ItemCheckListTableViewController: BaseTableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
             
+            // isDone?
+            let isDone = getAllItems()[indexPath.row-1].isDone != 0
+            
             // item name
             let normalAttributes = [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue]
             let strikeThroughAttributes = [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
             var labelString:NSAttributedString
-            // item marked as done?
-            if getAllItems()[indexPath.row-1].isDone == 0 {
-                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: normalAttributes)
-                cell.textLabel.textColor = .blackColor()
-            }
-            else {
+            if isDone {
                 labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: strikeThroughAttributes)
                 cell.textLabel.textColor = .lightGrayColor()
+            }
+            else {
+                labelString = NSAttributedString(string: getAllItems()[indexPath.row-1].name, attributes: normalAttributes)
+                cell.textLabel.textColor = .blackColor()
             }
             cell.textLabel.attributedText = labelString
             
             // delete button
             let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
             deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-            deleteButton.setTitle("❌", forState: UIControlState.Normal)
             deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            if isDone {
+                deleteButton.enabled = false
+                deleteButton.setTitle("", forState: UIControlState.Normal)
+            }
+            else {
+                deleteButton.enabled = true
+                deleteButton.setTitle("❌", forState: UIControlState.Normal)
+            }
             cell.contentView.addSubview(deleteButton)
             
             // view dictionary (for one row)

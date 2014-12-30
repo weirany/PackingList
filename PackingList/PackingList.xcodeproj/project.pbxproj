@@ -22,6 +22,7 @@
 		C48080901A4A1C100041C4BA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C480808F1A4A1C100041C4BA /* iAd.framework */; };
 		C48080941A4A1D530041C4BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48080931A4A1D530041C4BA /* BaseViewController.swift */; };
 		C48080981A4A1DF10041C4BA /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */; };
+		C497A3551A52671700B3DF0F /* VersionHistory.txt in Resources */ = {isa = PBXBuildFile; fileRef = C497A3541A52671700B3DF0F /* VersionHistory.txt */; };
 		C4A8923B1A08A3BD00827B42 /* PackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */; };
 		C4CC532E1A440D05008E1DEF /* CloneExistingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */; };
 		C4E635561A2C6328009A067B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E635551A2C6328009A067B /* Item.swift */; };
@@ -58,6 +59,7 @@
 		C480808F1A4A1C100041C4BA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C48080931A4A1D530041C4BA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		C497A3541A52671700B3DF0F /* VersionHistory.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VersionHistory.txt; sourceTree = "<group>"; };
 		C4A8923A1A08A3BD00827B42 /* PackingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackingListTableViewController.swift; sourceTree = "<group>"; };
 		C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneExistingTableViewController.swift; sourceTree = "<group>"; };
 		C4E635551A2C6328009A067B /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C4023E911A005E8F00F00756 /* Images.xcassets */,
 				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
+				C497A3541A52671700B3DF0F /* VersionHistory.txt */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C497A3551A52671700B3DF0F /* VersionHistory.txt in Resources */,
 				C4023E901A005E8F00F00756 /* Main.storyboard in Resources */,
 				C4023E951A005E8F00F00756 /* LaunchScreen.xib in Resources */,
 				C4023E921A005E8F00F00756 /* Images.xcassets in Resources */,
