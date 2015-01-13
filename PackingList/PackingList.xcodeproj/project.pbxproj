@@ -15,6 +15,7 @@
 		C4023EA11A005E8F00F00756 /* PackingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4023EA01A005E8F00F00756 /* PackingListTests.swift */; };
 		C418D8671A00BEBD0074BF6A /* TripNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */; };
 		C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */; };
+		C42840BB1A641ADD00153405 /* CheckListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42840BA1A641ADD00153405 /* CheckListTableViewCell.swift */; };
 		C472568E1A32D261004059FA /* MyTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568D1A32D261004059FA /* MyTripsTableViewController.swift */; };
 		C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */; };
 		C47C802F1A48EC8A0044C74C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47C802D1A48EC8A0044C74C /* Crashlytics.framework */; };
@@ -52,6 +53,7 @@
 		C4023EA01A005E8F00F00756 /* PackingListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackingListTests.swift; sourceTree = "<group>"; };
 		C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripNameViewController.swift; sourceTree = "<group>"; };
 		C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTypeTableViewController.swift; sourceTree = "<group>"; };
+		C42840BA1A641ADD00153405 /* CheckListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListTableViewCell.swift; sourceTree = "<group>"; };
 		C472568D1A32D261004059FA /* MyTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsTableViewController.swift; sourceTree = "<group>"; };
 		C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCheckListTableViewController.swift; sourceTree = "<group>"; };
 		C47C802D1A48EC8A0044C74C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
@@ -108,15 +110,10 @@
 		C4023E841A005E8F00F00756 /* PackingList */ = {
 			isa = PBXGroup;
 			children = (
-				C480809B1A4A1FB30041C4BA /* ViewControllers */,
-				C48080991A4A1F890041C4BA /* BaseViewControllers */,
-				C480809A1A4A1F950041C4BA /* CoreDataModels */,
-				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
-				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
-				C4023E911A005E8F00F00756 /* Images.xcassets */,
-				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
+				C42840B91A641A8F00153405 /* View */,
+				C480809B1A4A1FB30041C4BA /* Controller */,
+				C480809A1A4A1F950041C4BA /* Model */,
 				C4023E851A005E8F00F00756 /* Supporting Files */,
-				C497A3541A52671700B3DF0F /* VersionHistory.txt */,
 			);
 			path = PackingList;
 			sourceTree = "<group>";
@@ -124,6 +121,11 @@
 		C4023E851A005E8F00F00756 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C4023E8E1A005E8F00F00756 /* Main.storyboard */,
+				C4023E911A005E8F00F00756 /* Images.xcassets */,
+				C4023E931A005E8F00F00756 /* LaunchScreen.xib */,
+				C4023E871A005E8F00F00756 /* AppDelegate.swift */,
+				C497A3541A52671700B3DF0F /* VersionHistory.txt */,
 				C480808F1A4A1C100041C4BA /* iAd.framework */,
 				C47C802E1A48EC8A0044C74C /* Fabric.framework */,
 				C47C802D1A48EC8A0044C74C /* Crashlytics.framework */,
@@ -149,28 +151,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C48080991A4A1F890041C4BA /* BaseViewControllers */ = {
+		C42840B91A641A8F00153405 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C48080931A4A1D530041C4BA /* BaseViewController.swift */,
-				C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */,
+				C42840BA1A641ADD00153405 /* CheckListTableViewCell.swift */,
 			);
-			name = BaseViewControllers;
+			name = View;
 			sourceTree = "<group>";
 		};
-		C480809A1A4A1F950041C4BA /* CoreDataModels */ = {
+		C480809A1A4A1F950041C4BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C4023E891A005E8F00F00756 /* PackingList.xcdatamodeld */,
 				C4E635571A2C6330009A067B /* Trip.swift */,
 				C4E635551A2C6328009A067B /* Item.swift */,
 			);
-			name = CoreDataModels;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		C480809B1A4A1FB30041C4BA /* ViewControllers */ = {
+		C480809B1A4A1FB30041C4BA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C48080931A4A1D530041C4BA /* BaseViewController.swift */,
+				C48080971A4A1DF10041C4BA /* BaseTableViewController.swift */,
 				C472568D1A32D261004059FA /* MyTripsTableViewController.swift */,
 				C4CC532D1A440D05008E1DEF /* CloneExistingTableViewController.swift */,
 				C418D86C1A0444330074BF6A /* TripTypeTableViewController.swift */,
@@ -178,7 +181,7 @@
 				C418D8661A00BEBD0074BF6A /* TripNameViewController.swift */,
 				C472568F1A34102B004059FA /* ItemCheckListTableViewController.swift */,
 			);
-			name = ViewControllers;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +315,7 @@
 				C47256901A34102B004059FA /* ItemCheckListTableViewController.swift in Sources */,
 				C4E635561A2C6328009A067B /* Item.swift in Sources */,
 				C418D86D1A0444330074BF6A /* TripTypeTableViewController.swift in Sources */,
+				C42840BB1A641ADD00153405 /* CheckListTableViewCell.swift in Sources */,
 				C4023E8B1A005E8F00F00756 /* PackingList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

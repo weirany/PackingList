@@ -72,27 +72,15 @@ class PackingListTableViewController: BaseTableViewController {
         }
         else { // all other item rows
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as CheckListTableViewCell
             
             // item name
             cell.textLabel.text = self._items[indexPath.row-1]
             
             // delete button
-            let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-            deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-            deleteButton.setTitle("❌", forState: UIControlState.Normal)
-            deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-            cell.contentView.addSubview(deleteButton)
-            
-            // view dictionary (for one row)
-            let viewDict = ["deleteButton":deleteButton]
-            
-            // position
-            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
-            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
-            cell.addConstraints(cell_c_h)
-            cell.addConstraints(cell_c_v)
-            
+            cell.deleteButton.setTitle("❌", forState: UIControlState.Normal)
+            cell.deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+
             return cell
         }
     }

@@ -67,7 +67,7 @@ class ItemCheckListTableViewController: BaseTableViewController {
         }
         else { // all other item rows
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("checkListItem", forIndexPath: indexPath) as CheckListTableViewCell
             
             // isDone?
             let isDone = getAllItems()[indexPath.row-1].isDone != 0
@@ -87,27 +87,15 @@ class ItemCheckListTableViewController: BaseTableViewController {
             cell.textLabel.attributedText = labelString
             
             // delete button
-            let deleteButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-            deleteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-            deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.deleteButton.addTarget(self, action: "deleteButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             if isDone {
-                deleteButton.enabled = false
-                deleteButton.setTitle("", forState: UIControlState.Normal)
+                cell.deleteButton.enabled = false
+                cell.deleteButton.setTitle("", forState: UIControlState.Normal)
             }
             else {
-                deleteButton.enabled = true
-                deleteButton.setTitle("❌", forState: UIControlState.Normal)
+                cell.deleteButton.enabled = true
+                cell.deleteButton.setTitle("❌", forState: UIControlState.Normal)
             }
-            cell.contentView.addSubview(deleteButton)
-            
-            // view dictionary (for one row)
-            let viewDict = ["deleteButton":deleteButton]
-            
-            // position
-            let cell_c_h = NSLayoutConstraint.constraintsWithVisualFormat("[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: viewDict)
-            let cell_c_v = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[deleteButton]-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDict)
-            cell.addConstraints(cell_c_h)
-            cell.addConstraints(cell_c_v)
             
             return cell
         }
