@@ -4,3 +4,5 @@
 1.4.1
 - Bug fixes
 
+1.5.1
+- Fixed crash issue in check list page

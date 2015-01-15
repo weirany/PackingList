@@ -119,6 +119,8 @@ class ItemCheckListTableViewController: BaseTableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 { return }    // selected the add item row, ignore
+        
         getAllItems()[indexPath.row-1].isDone = (getAllItems()[indexPath.row-1].isDone == 0 ? 1 : 0)
         
         var error: NSError?
