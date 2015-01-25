@@ -6,3 +6,6 @@
 
 1.5.1
 - Fixed crash issue in check list page
+
+1.5.2
+- Changed deployment target to 7.0 and up
